@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cdemkhrhfbar1"]
+
+[ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="1_c78ru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbuxf"]
+atlas = ExtResource("1_c78ru")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceex"]
+size = Vector2(16, 16)
+
+[node name="Ghost1" type="CharacterBody2D" unique_id=1836695300]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=296289286]
+texture = SubResource("AtlasTexture_mbuxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345734192]
+scale = Vector2(0.99, 0.99)
+shape = SubResource("RectangleShape2D_0ceex")

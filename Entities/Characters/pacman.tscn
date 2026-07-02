@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://minpt2cwn4gk"]
+
+[ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="1_f4q5w"]
+[ext_resource type="Script" uid="uid://cko7y36hjiia7" path="res://Entities/Characters/pacman.gd" id="2_a7hya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4q5w"]
+atlas = ExtResource("1_f4q5w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7hya"]
+atlas = ExtResource("1_f4q5w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xs6j"]
+atlas = ExtResource("1_f4q5w")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qanr6"]
+atlas = ExtResource("1_f4q5w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ceex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4q5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7hya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xs6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qanr6")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceex"]
+size = Vector2(16, 16)
+
+[node name="Pacman" type="CharacterBody2D" unique_id=963476714]
+motion_mode = 1
+script = ExtResource("2_a7hya")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=353196102]
+sprite_frames = SubResource("SpriteFrames_0ceex")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219294530]
+scale = Vector2(0.99, 0.99)
+shape = SubResource("RectangleShape2D_0ceex")

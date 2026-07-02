@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dpl7x1i3uqu5t"]
+
+[ext_resource type="Script" uid="uid://cugus1sxai0yk" path="res://Entities/Tunnel/tunnel.gd" id="1_pbyko"]
+[ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="2_xjn4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ceex"]
+atlas = ExtResource("2_xjn4a")
+region = Rect2(80, 0, 16, 16)
+
+[node name="Tunnel" type="Node2D" unique_id=716920648]
+script = ExtResource("1_pbyko")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1466535782]
+texture = SubResource("AtlasTexture_0ceex")
