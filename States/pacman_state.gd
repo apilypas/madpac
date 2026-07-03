@@ -3,9 +3,6 @@ extends Node
 @export var pacman: Pacman
 @export var wall_layer: TileMapLayer
 
-func _ready() -> void:
-    pass
-
 func _process(delta: float) -> void:
     _snap_pacman_to_grid()
 

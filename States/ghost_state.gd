@@ -19,12 +19,30 @@ func _process(delta: float) -> void:
         if collision:
             ghost.direction = Vector2.ZERO
 
+        _handle_animations(ghost)
+
+        if ghost.scared_timer > 0:
+            ghost.scared_timer -= delta
+
+func _handle_animations(ghost: Ghost) -> void:
+    if ghost.scared_timer > 0:
+        ghost.sprite.play("scared")
+    else:
+        if ghost.direction == Vector2.RIGHT:
+            ghost.sprite.play("move_right")
+        elif ghost.direction == Vector2.LEFT:
+            ghost.sprite.play("move_left")
+        elif ghost.direction == Vector2.UP:
+            ghost.sprite.play("move_up")
+        elif ghost.direction == Vector2.DOWN:
+            ghost.sprite.play("move_down")
+
 func _get_next_direction(ghost: Ghost) -> Vector2:
     var pacman_cell: = wall_layer.local_to_map(pacman.position)
     var ghost_cell: = wall_layer.local_to_map(ghost.position)
 
     # Check if should turn to player
-    if pacman_cell.x == ghost_cell.x or pacman_cell.y == ghost_cell.y:
+    if ghost.scared_timer <= 0 and (pacman_cell.x == ghost_cell.x or pacman_cell.y == ghost_cell.y):
         if pacman_cell.x == ghost_cell.x:
             var has_path: bool = true
             var step: int = 1 if ghost_cell.y < pacman_cell.y else -1
