@@ -9,16 +9,18 @@ class_name LevelManager
 @export var tunnel_system: TunnelSystem
 @export var death_system: DeathSystem
 
+@export var current_level_index: int = 0
+
 var _level: Level
-var _current_level_index: int = 0
 
 func _ready() -> void:
-    _load(_current_level_index)
+    _load(current_level_index)
 
 func _process(_delta: float) -> void:
+    # Handle level change
     if _level.pellet_layer.get_used_cells().is_empty() and _level.bonus_layer.get_used_cells().is_empty():
-        _current_level_index += 1
-        _load(_current_level_index)
+        current_level_index += 1
+        _load(current_level_index)
 
 func _load(index: int) -> void:
     _level = level_scenes[index].instantiate()
