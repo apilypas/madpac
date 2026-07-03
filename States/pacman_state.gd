@@ -1,7 +1,8 @@
 extends Node
+class_name PacmanState
 
-@export var pacman: Pacman
-@export var wall_layer: TileMapLayer
+var pacman: Pacman
+var wall_layer: TileMapLayer
 
 func _process(delta: float) -> void:
     _snap_pacman_to_grid()

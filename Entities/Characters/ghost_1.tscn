@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cdemkhrhfbar1"]
 
+[ext_resource type="Script" uid="uid://ddp2736qw8ix7" path="res://Entities/Characters/ghost.gd" id="1_bgvsr"]
 [ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="1_c78ru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceex"]
@@ -103,9 +104,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost1" type="CharacterBody2D" unique_id=1836695300]
+[node name="Ghost1" type="CharacterBody2D" unique_id=1836695300 node_paths=PackedStringArray("sprite")]
 collision_layer = 2
 motion_mode = 1
+script = ExtResource("1_bgvsr")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345734192]
 scale = Vector2(0.99, 0.99)
@@ -113,4 +116,4 @@ shape = SubResource("RectangleShape2D_0ceex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=144921360]
 sprite_frames = SubResource("SpriteFrames_ca8k7")
-animation = &"scared"
+animation = &"move_right"

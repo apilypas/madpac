@@ -1,0 +1,107 @@
+[gd_scene format=4 uid="uid://dl34d44pe6bht"]
+
+[ext_resource type="Script" uid="uid://2psqbt0cunfe" path="res://Levels/level.gd" id="1_6mfy8"]
+[ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="2_1nift"]
+[ext_resource type="PackedScene" uid="uid://minpt2cwn4gk" path="res://Entities/Characters/pacman.tscn" id="3_hv8fo"]
+[ext_resource type="PackedScene" uid="uid://cdemkhrhfbar1" path="res://Entities/Characters/ghost_1.tscn" id="4_ffslo"]
+[ext_resource type="PackedScene" uid="uid://dpl7x1i3uqu5t" path="res://Entities/Tunnel/tunnel.tscn" id="5_vkhwo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1t0xi"]
+texture = ExtResource("2_1nift")
+0:0/0 = 0
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+4:5/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_807v7"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1t0xi")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mpg6w"]
+texture = ExtResource("2_1nift")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fmgos"]
+sources/0 = SubResource("TileSetAtlasSource_mpg6w")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odngn"]
+texture = ExtResource("2_1nift")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5ty2h"]
+sources/0 = SubResource("TileSetAtlasSource_odngn")
+
+[node name="Level02" type="Node2D" unique_id=186668274 node_paths=PackedStringArray("area", "pacman", "ghosts", "tunnels", "ghost_spawn_marker", "wall_layer", "pellet_layer", "bonus_layer")]
+script = ExtResource("1_6mfy8")
+area = NodePath("Area")
+pacman = NodePath("Pacman")
+ghosts = [NodePath("Ghost1")]
+tunnels = [NodePath("Tunnel1"), NodePath("Tunnel2"), NodePath("Tunnel3"), NodePath("Tunnel4")]
+ghost_spawn_marker = NodePath("GhostSpawnPoint")
+wall_layer = NodePath("WallLayer")
+pellet_layer = NodePath("PelletLayer")
+bonus_layer = NodePath("BonusLayer")
+
+[node name="Area" type="Control" parent="." unique_id=1007154886]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -152.0
+offset_top = -152.0
+offset_right = 168.0
+offset_bottom = 136.0
+
+[node name="WallLayer" type="TileMapLayer" parent="." unique_id=433070936]
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAUAAAABAAMAAAABAAUAAAAEAP7/AAACAAUAAGAEAAIAAAACAAUAAAAHAAIAAAACAAUAADAHAP7/AAACAAUAAFABAP3/AAABAAUAAAAEAAQAAAAAAAUAAGAEAPz/AAAAAAUAAFAAAAMAAAABAAUAAAD+//3/AAABAAUAAAD///3/AAABAAUAAAAAAP3/AAABAAUAAAAFAP7/AAABAAUAAAAGAP7/AAABAAUAAAAFAAIAAAABAAUAAAAGAAIAAAABAAUAAAAEAAMAAAABAAUAAGAEAP3/AAABAAUAAGAHAP//AAABAAUAAGAHAAAAAAABAAUAAGAHAAEAAAABAAUAAGD+/wMAAAABAAUAAAD//wMAAAABAAUAAAD9/wMAAAAAAAUAAAD9////AAAAAAUAAAD9/wEAAAAAAAUAAAACAP3/AAAAAAUAADACAAMAAAAAAAUAADACAP//AAAAAAUAADACAAEAAAAAAAUAADAFAAAAAAAAAAUAADAEAAAAAAAAAAUAAAD+/wEAAAABAAUAAAD//wEAAAABAAUAAAAAAAEAAAABAAUAAAABAAEAAAABAAUAAAD+////AAABAAUAAAD/////AAABAAUAAAAAAP//AAABAAUAAAABAP//AAABAAUAAAABAPv/AAABAAUAAAAAAPv/AAABAAUAAAD///v/AAABAAUAAAD+//v/AAABAAUAAAD9//v/AAABAAUAAAD8//v/AAABAAUAAAD7//z/AAAAAAUAAGD7//7/AAAAAAUAAFD7////AAADAAUAAFD7/wAAAAABAAUAAFD7/wEAAAABAAUAAFD7/wIAAAABAAUAAFD7/wMAAAABAAUAAFD7/wQAAAABAAUAAFD8/wUAAAABAAUAADD9/wUAAAABAAUAADD+/wUAAAABAAUAADD//wUAAAABAAUAADAAAAUAAAABAAUAADABAAUAAAABAAUAADADAAYAAAACAAUAAFAFAAYAAAACAAUAAAAGAAUAAAABAAUAAFAGAAQAAAACAAUAAAAHAAQAAAABAAUAAAAIAAQAAAABAAUAAAAJAP3/AAABAAUAAGAJAP7/AAABAAUAAGAJAP//AAABAAUAAGAJAAAAAAABAAUAAGAJAAEAAAABAAUAAGAJAAIAAAABAAUAAGAJAAMAAAABAAUAAGAGAPz/AAACAAUAAGAHAPz/AAABAAUAADAIAPz/AAABAAUAADADAPr/AAABAAUAADAEAPr/AAABAAUAADAFAPr/AAABAAUAADAGAPv/AAABAAUAAGACAPr/AAACAAUAAAD7//v/AAAEAAUAAAD7/wUAAAACAAUAAGACAAYAAAACAAUAAGAGAAYAAAACAAUAADAJAAQAAAACAAUAADACAPv/AAACAAUAADACAAUAAAACAAUAAFAJAPz/AAADAAUAAFAGAPr/AAACAAUAAFD7//n/AAACAAUAAAAJAPr/AAACAAUAAFAIAPr/AAACAAUAAGAIAPn/AAABAAUAAGAIAPj/AAACAAUAAFAHAPj/AAABAAUAADAGAPj/AAABAAUAADAFAPj/AAACAAUAAGADAPj/AAACAAUAADACAPj/AAABAAUAADABAPj/AAABAAUAADD8//n/AAABAAUAADD9//n/AAABAAUAADD+//n/AAABAAUAADD///n/AAABAAUAADAAAPj/AAACAAUAAAAAAPn/AAACAAUAADAEAPf/AAABAAUAAAADAPf/AAACAAUAAAAFAPf/AAACAAUAAFD7//r/AAABAAUAAGAJAPv/AAABAAUAAGAEAAcAAAABAAUAAAAFAAcAAAACAAUAADADAAcAAAACAAUAAGD6//v/AAABAAUAAAD5//v/AAABAAUAAAD4//v/AAABAAUAAAD3//z/AAABAAUAAGD3//3/AAABAAUAAGD3//7/AAABAAUAAGD4////AAABAAUAADD5////AAABAAUAADD6////AAABAAUAADD3//v/AAACAAUAAAD3////AAACAAUAAGD7//3/AAAGAAAAAGA=")
+tile_set = SubResource("TileSet_807v7")
+
+[node name="PelletLayer" type="TileMapLayer" parent="." unique_id=1106939462]
+tile_map_data = PackedByteArray("AAD8//7/AAADAAAAAAD9//7/AAADAAAAAAD+//7/AAADAAAAAAD///7/AAADAAAAAAAAAP7/AAADAAAAAAABAP7/AAADAAAAAAACAP7/AAADAAAAAAADAP7/AAADAAAAAAD9//z/AAADAAAAAAD+//z/AAADAAAAAAD///z/AAADAAAAAAAAAPz/AAADAAAAAAABAPz/AAADAAAAAAADAPz/AAADAAAAAAADAP3/AAADAAAAAAACAPz/AAADAAAAAAADAPv/AAADAAAAAAAFAPv/AAADAAAAAAAFAPz/AAADAAAAAAAFAP3/AAADAAAAAAAGAP3/AAADAAAAAAAHAP3/AAADAAAAAAAIAP7/AAADAAAAAAAIAP//AAADAAAAAAAIAAAAAAADAAAAAAAIAAEAAAADAAAAAAAIAAIAAAADAAAAAAAIAAMAAAADAAAAAAAHAAMAAAADAAAAAAAGAAMAAAADAAAAAAACAAQAAAADAAAAAAABAAQAAAADAAAAAAAAAAQAAAADAAAAAAD//wQAAAADAAAAAAD+/wQAAAADAAAAAAD9/wQAAAADAAAAAAD8/wMAAAADAAAAAAD8/wIAAAADAAAAAAD8/wEAAAADAAAAAAD8/wAAAAADAAAAAAD8////AAADAAAAAAD9/wIAAAADAAAAAAD+/wIAAAADAAAAAAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAABAAIAAAADAAAAAAACAAIAAAADAAAAAAAEAP//AAADAAAAAAAFAP//AAADAAAAAAAGAP//AAADAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAFAAEAAAADAAAAAAAEAAEAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_fmgos")
+collision_enabled = false
+
+[node name="BonusLayer" type="TileMapLayer" parent="." unique_id=1898703678]
+tile_map_data = PackedByteArray("AAD8//z/AAAEAAAAAAD8/wQAAAAEAAAAAAAFAAMAAAAEAAAAAAAIAP3/AAAEAAAAAAAEAPv/AAAEAAAAAAA=")
+tile_set = SubResource("TileSet_5ty2h")
+collision_enabled = false
+
+[node name="GhostSpawnPoint" type="Marker2D" parent="." unique_id=672520307]
+position = Vector2(-56, -40)
+
+[node name="Pacman" parent="." unique_id=963476714 instance=ExtResource("3_hv8fo")]
+position = Vector2(56, -104)
+
+[node name="Ghost1" parent="." unique_id=1836695300 instance=ExtResource("4_ffslo")]
+position = Vector2(-120, -24)
+
+[node name="Tunnel1" parent="." unique_id=716920648 instance=ExtResource("5_vkhwo")]
+position = Vector2(-56, -88)
+
+[node name="Tunnel2" parent="." unique_id=41096052 instance=ExtResource("5_vkhwo")]
+position = Vector2(136, -72)
+
+[node name="Tunnel3" parent="." unique_id=1161940671 instance=ExtResource("5_vkhwo")]
+position = Vector2(72, -120)
+network_id = "Network2"
+
+[node name="Tunnel4" parent="." unique_id=1722870681 instance=ExtResource("5_vkhwo")]
+position = Vector2(72, 104)
+network_id = "Network2"

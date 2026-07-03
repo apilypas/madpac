@@ -1,128 +1,38 @@
-[gd_scene format=4 uid="uid://c0mld5llqv87w"]
+[gd_scene format=3 uid="uid://c0mld5llqv87w"]
 
-[ext_resource type="PackedScene" uid="uid://minpt2cwn4gk" path="res://Entities/Characters/pacman.tscn" id="2_lj4ca"]
-[ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="3_1sdb3"]
-[ext_resource type="PackedScene" uid="uid://cdemkhrhfbar1" path="res://Entities/Characters/ghost_1.tscn" id="4_616no"]
+[ext_resource type="PackedScene" uid="uid://bllsdcstuhu1" path="res://Managers/level_manager.tscn" id="1_5lpdq"]
+[ext_resource type="PackedScene" uid="uid://dhgbfdwtl36mx" path="res://Levels/level_01.tscn" id="2_pakvq"]
+[ext_resource type="PackedScene" uid="uid://dl34d44pe6bht" path="res://Levels/level_02.tscn" id="3_5lpdq"]
 [ext_resource type="Script" uid="uid://b0urhu0ayflie" path="res://States/pacman_state.gd" id="4_s0nau"]
-[ext_resource type="Script" uid="uid://ddp2736qw8ix7" path="res://Entities/Characters/ghost.gd" id="5_p805a"]
-[ext_resource type="PackedScene" uid="uid://dpl7x1i3uqu5t" path="res://Entities/Tunnel/tunnel.tscn" id="6_blhi5"]
 [ext_resource type="Script" uid="uid://jsp3j3bgdmmw" path="res://States/ghost_state.gd" id="7_pakvq"]
 [ext_resource type="Script" uid="uid://cmgpn05y44nyx" path="res://Systems/tunnel_system.gd" id="8_5lpdq"]
 [ext_resource type="Script" uid="uid://cu55rm8ppsiuf" path="res://Systems/collectable_system.gd" id="9_knw1p"]
 [ext_resource type="Script" uid="uid://bqg505qbim5mk" path="res://Systems/death_system.gd" id="10_blhi5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0nau"]
-texture = ExtResource("3_1sdb3")
-0:0/0 = 0
-0:5/0 = 0
-0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:5/0 = 0
-1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:5/0 = 0
-2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:5/0 = 0
-4:5/0 = 0
-6:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_0ceex"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_s0nau")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_616no"]
-texture = ExtResource("3_1sdb3")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_616no"]
-sources/0 = SubResource("TileSetAtlasSource_616no")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p805a"]
-texture = ExtResource("3_1sdb3")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-4:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_p805a"]
-sources/0 = SubResource("TileSetAtlasSource_p805a")
-
 [node name="PlayScene" type="Node2D" unique_id=1010169136]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=15349444]
-zoom = Vector2(2, 2)
+[node name="LevelManager" parent="." unique_id=1949682444 node_paths=PackedStringArray("container_node", "pacman_state", "ghost_state", "collectable_system", "tunnel_system", "death_system") instance=ExtResource("1_5lpdq")]
+container_node = NodePath("../LevelContainer")
+level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq")])
+pacman_state = NodePath("../PacmanState")
+ghost_state = NodePath("../GhostState")
+collectable_system = NodePath("../CollectableSystem")
+tunnel_system = NodePath("../TunnelSystem")
+death_system = NodePath("../DeathSystem")
 
-[node name="WallLayer" type="TileMapLayer" parent="." unique_id=621859571]
-tile_map_data = PackedByteArray("AAD9//3/AAAAAAUAAAABAAMAAAABAAUAAAAEAP7/AAACAAUAAGAEAAIAAAACAAUAAAAHAAIAAAACAAUAADAHAP7/AAACAAUAAFABAP3/AAABAAUAAAAEAAQAAAAAAAUAAGAEAPz/AAAAAAUAAFAAAAMAAAABAAUAAAD+//3/AAABAAUAAAD///3/AAABAAUAAAAAAP3/AAABAAUAAAAFAP7/AAABAAUAAAAGAP7/AAABAAUAAAAFAAIAAAABAAUAAAAGAAIAAAABAAUAAAAEAAMAAAABAAUAAGAEAP3/AAABAAUAAGAHAP//AAABAAUAAGAHAAAAAAABAAUAAGAHAAEAAAABAAUAAGD+/wMAAAABAAUAAAD//wMAAAABAAUAAAD9/wMAAAAAAAUAAAD9////AAAAAAUAAAD9/wEAAAAAAAUAAAACAP3/AAAAAAUAADACAAMAAAAAAAUAADACAP//AAAAAAUAADACAAEAAAAAAAUAADAFAAAAAAAAAAUAADAEAAAAAAAAAAUAAAD+/wEAAAABAAUAAAD//wEAAAABAAUAAAAAAAEAAAABAAUAAAABAAEAAAABAAUAAAD+////AAABAAUAAAD/////AAABAAUAAAAAAP//AAABAAUAAAABAP//AAABAAUAAAABAPv/AAABAAUAAAAAAPv/AAABAAUAAAD///v/AAABAAUAAAD+//v/AAABAAUAAAD9//v/AAABAAUAAAD8//v/AAABAAUAAAD7//z/AAAAAAUAAGD7//7/AAAAAAUAAFD7////AAADAAUAAFD7/wAAAAABAAUAAFD7/wEAAAABAAUAAFD7/wIAAAABAAUAAFD7/wMAAAABAAUAAFD7/wQAAAABAAUAAFD8/wUAAAABAAUAADD9/wUAAAABAAUAADD+/wUAAAABAAUAADD//wUAAAABAAUAADAAAAUAAAABAAUAADABAAUAAAABAAUAADADAAYAAAACAAUAAFAFAAYAAAACAAUAAAAGAAUAAAABAAUAAFAGAAQAAAACAAUAAAAHAAQAAAABAAUAAAAIAAQAAAABAAUAAAAJAP3/AAABAAUAAGAJAP7/AAABAAUAAGAJAP//AAABAAUAAGAJAAAAAAABAAUAAGAJAAEAAAABAAUAAGAJAAIAAAABAAUAAGAJAAMAAAABAAUAAGAGAPz/AAACAAUAAGAHAPz/AAABAAUAADAIAPz/AAABAAUAADADAPr/AAABAAUAADAEAPr/AAABAAUAADAFAPr/AAABAAUAADAGAPv/AAABAAUAAGACAPr/AAACAAUAAAD7//v/AAAEAAUAAAD7/wUAAAACAAUAAGACAAYAAAACAAUAAGAGAAYAAAACAAUAADAJAAQAAAACAAUAADACAPv/AAACAAUAADACAAUAAAACAAUAAFAJAPz/AAADAAUAAFAGAPr/AAACAAUAAFD7//n/AAACAAUAAAAJAPr/AAACAAUAAFAIAPr/AAACAAUAAGAIAPn/AAABAAUAAGAIAPj/AAACAAUAAFAHAPj/AAABAAUAADAGAPj/AAABAAUAADAFAPj/AAACAAUAAGADAPj/AAACAAUAADACAPj/AAABAAUAADABAPj/AAABAAUAADD8//n/AAABAAUAADD9//n/AAABAAUAADD+//n/AAABAAUAADD///n/AAABAAUAADAAAPj/AAACAAUAAAAAAPn/AAACAAUAADAEAPf/AAABAAUAAAADAPf/AAACAAUAAAAFAPf/AAACAAUAAFD7//r/AAABAAUAAGAJAPv/AAABAAUAAGAEAAcAAAABAAUAAAAFAAcAAAACAAUAADADAAcAAAACAAUAAGD6//v/AAABAAUAAAD5//v/AAABAAUAAAD4//v/AAABAAUAAAD3//z/AAABAAUAAGD3//3/AAABAAUAAGD3//7/AAABAAUAAGD4////AAABAAUAADD5////AAABAAUAADD6////AAABAAUAADD3//v/AAACAAUAAAD3////AAACAAUAAGD7//3/AAAGAAAAAGA=")
-tile_set = SubResource("TileSet_0ceex")
+[node name="LevelContainer" type="Node" parent="." unique_id=941730381]
 
-[node name="PelletLayer" type="TileMapLayer" parent="." unique_id=2087398270]
-tile_map_data = PackedByteArray("AAD8//7/AAADAAAAAAD9//7/AAADAAAAAAD+//7/AAADAAAAAAD///7/AAADAAAAAAAAAP7/AAADAAAAAAABAP7/AAADAAAAAAACAP7/AAADAAAAAAADAP7/AAADAAAAAAD9//z/AAADAAAAAAD+//z/AAADAAAAAAD///z/AAADAAAAAAAAAPz/AAADAAAAAAABAPz/AAADAAAAAAADAPz/AAADAAAAAAADAP3/AAADAAAAAAACAPz/AAADAAAAAAADAPv/AAADAAAAAAAFAPv/AAADAAAAAAAFAPz/AAADAAAAAAAFAP3/AAADAAAAAAAGAP3/AAADAAAAAAAHAP3/AAADAAAAAAAIAP7/AAADAAAAAAAIAP//AAADAAAAAAAIAAAAAAADAAAAAAAIAAEAAAADAAAAAAAIAAIAAAADAAAAAAAIAAMAAAADAAAAAAAHAAMAAAADAAAAAAAGAAMAAAADAAAAAAACAAQAAAADAAAAAAABAAQAAAADAAAAAAAAAAQAAAADAAAAAAD//wQAAAADAAAAAAD+/wQAAAADAAAAAAD9/wQAAAADAAAAAAD8/wMAAAADAAAAAAD8/wIAAAADAAAAAAD8/wEAAAADAAAAAAD8/wAAAAADAAAAAAD8////AAADAAAAAAD9/wIAAAADAAAAAAD+/wIAAAADAAAAAAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAABAAIAAAADAAAAAAACAAIAAAADAAAAAAAEAP//AAADAAAAAAAFAP//AAADAAAAAAAGAP//AAADAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAFAAEAAAADAAAAAAAEAAEAAAADAAAAAAA=")
-tile_set = SubResource("TileSet_616no")
-collision_enabled = false
-
-[node name="BonusLayer" type="TileMapLayer" parent="." unique_id=586919531]
-tile_map_data = PackedByteArray("AAD8//z/AAAEAAAAAAD8/wQAAAAEAAAAAAAFAAMAAAAEAAAAAAAIAP3/AAAEAAAAAAAEAPv/AAAEAAAAAAA=")
-tile_set = SubResource("TileSet_p805a")
-collision_enabled = false
-
-[node name="GhostSpawnPoint" type="Marker2D" parent="." unique_id=872231305]
-position = Vector2(-56, -40)
-
-[node name="Pacman" parent="." unique_id=963476714 instance=ExtResource("2_lj4ca")]
-position = Vector2(56, -104)
-
-[node name="Ghost1" parent="." unique_id=1836695300 instance=ExtResource("4_616no")]
-position = Vector2(-120, -24)
-script = ExtResource("5_p805a")
-
-[node name="Tunnel1" parent="." unique_id=716920648 instance=ExtResource("6_blhi5")]
-position = Vector2(-56, -88)
-
-[node name="Tunnel2" parent="." unique_id=1663552252 instance=ExtResource("6_blhi5")]
-position = Vector2(136, -72)
-
-[node name="Tunnel3" parent="." unique_id=229953175 instance=ExtResource("6_blhi5")]
-position = Vector2(72, -120)
-network_id = "Network2"
-
-[node name="Tunnel4" parent="." unique_id=1426201756 instance=ExtResource("6_blhi5")]
-position = Vector2(72, 104)
-network_id = "Network2"
-
-[node name="PacmanState" type="Node" parent="." unique_id=868592517 node_paths=PackedStringArray("pacman", "wall_layer")]
+[node name="PacmanState" type="Node" parent="." unique_id=868592517]
 script = ExtResource("4_s0nau")
-pacman = NodePath("../Pacman")
-wall_layer = NodePath("../WallLayer")
 
-[node name="GhostState" type="Node" parent="." unique_id=1874004064 node_paths=PackedStringArray("pacman", "ghosts", "wall_layer")]
+[node name="GhostState" type="Node" parent="." unique_id=1874004064]
 script = ExtResource("7_pakvq")
-pacman = NodePath("../Pacman")
-ghosts = [NodePath("../Ghost1")]
-wall_layer = NodePath("../WallLayer")
 
-[node name="CollectableSystem" type="Node" parent="." unique_id=194082918 node_paths=PackedStringArray("pacman", "pellet_layer", "bonus_layer", "ghosts")]
+[node name="CollectableSystem" type="Node" parent="." unique_id=194082918]
 script = ExtResource("9_knw1p")
-pacman = NodePath("../Pacman")
-pellet_layer = NodePath("../PelletLayer")
-bonus_layer = NodePath("../BonusLayer")
-ghosts = [NodePath("../Ghost1")]
 
-[node name="TunnelSystem" type="Node" parent="." unique_id=286794842 node_paths=PackedStringArray("tunnels", "pacman")]
+[node name="TunnelSystem" type="Node" parent="." unique_id=286794842]
 script = ExtResource("8_5lpdq")
-tunnels = [NodePath("../Tunnel1"), NodePath("../Tunnel2"), NodePath("../Tunnel3"), NodePath("../Tunnel4")]
-pacman = NodePath("../Pacman")
 
-[node name="DeathSystem" type="Node" parent="." unique_id=386394380 node_paths=PackedStringArray("pacman", "ghosts", "ghost_spawn_marker")]
+[node name="DeathSystem" type="Node" parent="." unique_id=386394380]
 script = ExtResource("10_blhi5")
-pacman = NodePath("../Pacman")
-ghosts = [NodePath("../Ghost1")]
-ghost_spawn_marker = NodePath("../GhostSpawnPoint")

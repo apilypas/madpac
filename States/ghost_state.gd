@@ -1,8 +1,9 @@
 extends Node
+class_name GhostState
 
-@export var pacman: Pacman
-@export var ghosts: Array[Ghost] = []
-@export var wall_layer: TileMapLayer
+var pacman: Pacman
+var ghosts: Array[Ghost] = []
+var wall_layer: TileMapLayer
 
 func _ready() -> void:
     pass
