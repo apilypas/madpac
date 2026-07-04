@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
                 var tween: = create_tween()
                 tween.tween_property(ghost, "position", _ghost_positions.pick_random(), 0.3)
                 tween.tween_property(ghost, "is_alive", true, 0)
+                game_state.score += 500
             else:
                 level.pacman.position = _spawn_position
                 level.pacman.direction = Vector2.ZERO

@@ -17,6 +17,7 @@ func _handle_pellets() -> void:
 
     if tile_data:
         level.pellet_layer.erase_cell(cell)
+        game_state.score += 10
 
 func _handle_bonuses() -> void:
     var cell: = level.bonus_layer.local_to_map(level.pacman.position)
@@ -24,5 +25,6 @@ func _handle_bonuses() -> void:
 
     if tile_data:
         level.bonus_layer.erase_cell(cell)
+        game_state.score += 100
         for ghost in level.ghosts:
             ghost.scared_timer = 5.0

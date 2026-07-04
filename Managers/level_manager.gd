@@ -55,3 +55,4 @@ func _load(index: int) -> void:
 
     game_state.ready_timer = 3.0
     game_state.is_paused = true
+    game_state.level = index + 1
