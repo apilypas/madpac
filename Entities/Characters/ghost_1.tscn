@@ -128,4 +128,4 @@ shape = SubResource("RectangleShape2D_0ceex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=144921360]
 sprite_frames = SubResource("SpriteFrames_ca8k7")
-animation = &"dead"
+animation = &"move_right"
