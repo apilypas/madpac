@@ -4,6 +4,7 @@ class_name PlayScene
 @export var game_state: GameState
 
 var _is_waiting_ready: bool = false
+var _is_game_over_shown: bool = false
 
 func _process(delta: float) -> void:
     if game_state.can_pause:
@@ -23,3 +24,7 @@ func _process(delta: float) -> void:
             _is_waiting_ready = false
             game_state.can_pause = true
             game_state.is_paused = false
+
+    if game_state.is_game_over and !_is_game_over_shown:
+        _is_game_over_shown = true
+        game_intents.append(Game.Intent.GAME_OVER)

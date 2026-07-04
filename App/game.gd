@@ -1,13 +1,14 @@
 extends Node
 class_name Game
 
-enum Intent { START, PLAY, PAUSE, READY, POP }
+enum Intent { START, PLAY, PAUSE, READY, GAME_OVER, POP }
 
 @export var scene_container: Node
 @export var start_scene: PackedScene
 @export var play_scene: PackedScene
 @export var pause_scene: PackedScene
 @export var ready_scene: PackedScene
+@export var game_over_scene: PackedScene
 
 var _intents: Array[Intent] = []
 
@@ -22,8 +23,10 @@ func _process(_delta: float) -> void:
 func _handle_intent(intent: Intent) -> void:
     if intent == Intent.PAUSE:
         _push(pause_scene)
-    if intent == Intent.READY:
+    elif intent == Intent.READY:
         _push(ready_scene)
+    elif intent == Intent.GAME_OVER:
+        _push(game_over_scene)
     elif intent == Intent.POP:
         _pop()
     elif intent == Intent.PLAY:

@@ -23,28 +23,39 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -276.0
-offset_right = 276.0
+offset_left = -344.0
+offset_right = 348.0
 offset_bottom = 56.0
 grow_horizontal = 2
 
 [node name="LevelLabel" type="Label" parent="UI/Top" unique_id=1719073899]
 layout_mode = 0
-offset_left = 120.0
-offset_right = 214.0
+offset_left = 80.0
+offset_right = 174.0
 offset_bottom = 28.0
 text = "Level: 1"
 
 [node name="ScoreLabel" type="Label" parent="UI/Top" unique_id=914987027]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -4.0
-offset_right = 192.0
+anchors_preset = -1
+anchor_left = 0.48600003
+anchor_right = 0.48600003
+offset_left = -72.31201
+offset_right = 123.68799
 offset_bottom = 28.0
 grow_horizontal = 2
 text = "Score: 00000000"
+
+[node name="LivesLabel" type="Label" parent="UI/Top" unique_id=571862453]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 198.0
+offset_right = 294.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Lives: 0"
 
 [node name="GameState" type="Node" parent="." unique_id=1778721681]
 script = ExtResource("1_blhi5")
@@ -62,11 +73,12 @@ death_system = NodePath("../DeathSystem")
 
 [node name="LevelContainer" type="Node" parent="." unique_id=941730381]
 
-[node name="HudManager" type="Node" parent="." unique_id=843063532 node_paths=PackedStringArray("game_state", "level_label", "score_label")]
+[node name="HudManager" type="Node" parent="." unique_id=843063532 node_paths=PackedStringArray("game_state", "level_label", "score_label", "lives_label")]
 script = ExtResource("6_knw1p")
 game_state = NodePath("../GameState")
 level_label = NodePath("../UI/Top/LevelLabel")
 score_label = NodePath("../UI/Top/ScoreLabel")
+lives_label = NodePath("../UI/Top/LivesLabel")
 
 [node name="PacmanState" type="Node" parent="." unique_id=868592517 node_paths=PackedStringArray("game_state")]
 script = ExtResource("4_s0nau")

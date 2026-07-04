@@ -1,1 +1,2 @@
 extends SceneBase
+class_name ReadyScene

@@ -52,6 +52,7 @@ func _load(index: int) -> void:
     collectable_system.level = _level
     tunnel_system.level = _level
     death_system.level = _level
+    death_system.init()
 
     game_state.ready_timer = 3.0
     game_state.is_paused = true
