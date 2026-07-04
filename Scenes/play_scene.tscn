@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c0mld5llqv87w"]
 
 [ext_resource type="PackedScene" uid="uid://bllsdcstuhu1" path="res://Managers/level_manager.tscn" id="1_5lpdq"]
+[ext_resource type="Script" uid="uid://dp6iotipjml7h" path="res://States/game_state.gd" id="1_blhi5"]
+[ext_resource type="Script" uid="uid://ch0fh84ibrvx3" path="res://Scenes/play_scene.gd" id="1_knw1p"]
 [ext_resource type="PackedScene" uid="uid://dhgbfdwtl36mx" path="res://Levels/level_01.tscn" id="2_pakvq"]
 [ext_resource type="PackedScene" uid="uid://dl34d44pe6bht" path="res://Levels/level_02.tscn" id="3_5lpdq"]
 [ext_resource type="Script" uid="uid://b0urhu0ayflie" path="res://States/pacman_state.gd" id="4_s0nau"]
@@ -9,7 +11,12 @@
 [ext_resource type="Script" uid="uid://cu55rm8ppsiuf" path="res://Systems/collectable_system.gd" id="9_knw1p"]
 [ext_resource type="Script" uid="uid://bqg505qbim5mk" path="res://Systems/death_system.gd" id="10_blhi5"]
 
-[node name="PlayScene" type="Node2D" unique_id=1010169136]
+[node name="PlayScene" type="Node2D" unique_id=1010169136 node_paths=PackedStringArray("game_state")]
+script = ExtResource("1_knw1p")
+game_state = NodePath("GameState")
+
+[node name="GameState" type="Node" parent="." unique_id=1778721681]
+script = ExtResource("1_blhi5")
 
 [node name="LevelManager" parent="." unique_id=1949682444 node_paths=PackedStringArray("container_node", "pacman_state", "ghost_state", "collectable_system", "tunnel_system", "death_system") instance=ExtResource("1_5lpdq")]
 container_node = NodePath("../LevelContainer")
@@ -22,17 +29,22 @@ death_system = NodePath("../DeathSystem")
 
 [node name="LevelContainer" type="Node" parent="." unique_id=941730381]
 
-[node name="PacmanState" type="Node" parent="." unique_id=868592517]
+[node name="PacmanState" type="Node" parent="." unique_id=868592517 node_paths=PackedStringArray("game_state")]
 script = ExtResource("4_s0nau")
+game_state = NodePath("../GameState")
 
-[node name="GhostState" type="Node" parent="." unique_id=1874004064]
+[node name="GhostState" type="Node" parent="." unique_id=1874004064 node_paths=PackedStringArray("game_state")]
 script = ExtResource("7_pakvq")
+game_state = NodePath("../GameState")
 
-[node name="CollectableSystem" type="Node" parent="." unique_id=194082918]
+[node name="CollectableSystem" type="Node" parent="." unique_id=194082918 node_paths=PackedStringArray("game_state")]
 script = ExtResource("9_knw1p")
+game_state = NodePath("../GameState")
 
-[node name="TunnelSystem" type="Node" parent="." unique_id=286794842]
+[node name="TunnelSystem" type="Node" parent="." unique_id=286794842 node_paths=PackedStringArray("game_state")]
 script = ExtResource("8_5lpdq")
+game_state = NodePath("../GameState")
 
-[node name="DeathSystem" type="Node" parent="." unique_id=386394380]
+[node name="DeathSystem" type="Node" parent="." unique_id=386394380 node_paths=PackedStringArray("game_state")]
 script = ExtResource("10_blhi5")
+game_state = NodePath("../GameState")

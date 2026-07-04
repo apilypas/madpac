@@ -1,6 +1,8 @@
 extends Node
 class_name DeathSystem
 
+@export var game_state: GameState
+
 var level: Level
 
 var _spawn_position: Vector2
@@ -14,6 +16,9 @@ func _ready() -> void:
         _ghost_positions.append(ghost.position)
 
 func _process(delta: float) -> void:
+    if game_state.is_paused:
+        return
+
     for ghost in level.ghosts:
         if ghost.is_alive and ghost.position.distance_to(level.pacman.position) < 16:
             if ghost.scared_timer > 0:

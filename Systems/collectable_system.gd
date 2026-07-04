@@ -1,9 +1,13 @@
 extends Node
 class_name CollectableSystem
 
+@export var game_state: GameState
 var level: Level
 
 func _process(_delta: float) -> void:
+    if game_state.is_paused:
+        return
+
     _handle_pellets()
     _handle_bonuses()
 

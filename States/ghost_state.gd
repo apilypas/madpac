@@ -1,6 +1,7 @@
 extends Node
 class_name GhostState
 
+@export var game_state: GameState
 var pacman: Pacman
 var ghosts: Array[Ghost] = []
 var wall_layer: TileMapLayer
@@ -9,22 +10,24 @@ func _ready() -> void:
     pass
 
 func _process(delta: float) -> void:
+    if !game_state.is_paused:
+        for ghost in ghosts:
+            if ghost.is_alive and ghost.is_moving:
+                if _snap_to_grid(ghost):
+                    ghost.direction = _get_next_direction(ghost)
+
+                if ghost.direction == Vector2.ZERO:
+                    ghost.direction = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].pick_random()
+
+                var collision: = ghost.move_and_collide(ghost.direction * ghost.speed * delta)
+                if collision:
+                    ghost.direction = Vector2.ZERO
+
+            if ghost.scared_timer > 0:
+                ghost.scared_timer -= delta
+
     for ghost in ghosts:
-        if ghost.is_alive and ghost.is_moving:
-            if _snap_to_grid(ghost):
-                ghost.direction = _get_next_direction(ghost)
-
-            if ghost.direction == Vector2.ZERO:
-                ghost.direction = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].pick_random()
-
-            var collision: = ghost.move_and_collide(ghost.direction * ghost.speed * delta)
-            if collision:
-                ghost.direction = Vector2.ZERO
-
         _handle_animations(ghost)
-
-        if ghost.scared_timer > 0:
-            ghost.scared_timer -= delta
 
 func _handle_animations(ghost: Ghost) -> void:
     if !ghost.is_alive:

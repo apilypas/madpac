@@ -1,10 +1,14 @@
 extends Node
 class_name PacmanState
 
+@export var game_state: GameState
 var pacman: Pacman
 var wall_layer: TileMapLayer
 
 func _process(delta: float) -> void:
+    if game_state.is_paused:
+        return
+
     _snap_pacman_to_grid()
 
     if pacman.is_moving:

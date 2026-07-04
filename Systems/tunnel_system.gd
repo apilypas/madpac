@@ -1,9 +1,13 @@
 extends Node
 class_name TunnelSystem
 
+@export var game_state: GameState
 var level: Level
 
 func _process(delta: float) -> void:
+    if game_state.is_paused:
+        return
+
     var entry: Tunnel = null
     var exit: Tunnel = null
 
