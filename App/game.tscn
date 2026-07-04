@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cn3al7l7i0ncd"]
+
+[ext_resource type="Script" uid="uid://d1bj2p8m6yysn" path="res://App/game.gd" id="1_6w5aw"]
+[ext_resource type="PackedScene" uid="uid://btutgn3ach8lf" path="res://Scenes/start_scene.tscn" id="2_j3adi"]
+[ext_resource type="PackedScene" uid="uid://c0mld5llqv87w" path="res://Scenes/play_scene.tscn" id="3_1kb1v"]
+[ext_resource type="PackedScene" uid="uid://bs6p5imj6c6ig" path="res://Scenes/pause_scene.tscn" id="4_ngppy"]
+
+[node name="Game" type="Node2D" unique_id=1637709555 node_paths=PackedStringArray("scene_container")]
+script = ExtResource("1_6w5aw")
+scene_container = NodePath("SceneContainer")
+start_scene = ExtResource("2_j3adi")
+play_scene = ExtResource("3_1kb1v")
+pause_scene = ExtResource("4_ngppy")
+
+[node name="SceneContainer" type="Node" parent="." unique_id=734188062]

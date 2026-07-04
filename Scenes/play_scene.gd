@@ -8,5 +8,3 @@ func _process(_delta: float) -> void:
         game_state.is_paused = !game_state.is_paused
         if game_state.is_paused:
             game_intents.append(Game.Intent.PAUSE)
-        else:
-            game_intents.append(Game.Intent.UNPAUSE)
