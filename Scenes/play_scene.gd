@@ -3,8 +3,21 @@ class_name PlayScene
 
 @export var game_state: GameState
 
-func _process(_delta: float) -> void:
-    if Input.is_action_just_pressed("pause"):
-        game_state.is_paused = !game_state.is_paused
-        if game_state.is_paused:
-            game_intents.append(Game.Intent.PAUSE)
+var _is_waiting_ready: bool = false
+
+func _process(delta: float) -> void:
+    if game_state.ready_timer <= 0:
+        if Input.is_action_just_pressed("pause"):
+            game_state.is_paused = !game_state.is_paused
+            if game_state.is_paused:
+                game_intents.append(Game.Intent.PAUSE)
+
+    else:
+        if !_is_waiting_ready:
+            _is_waiting_ready = true
+            game_intents.append(Game.Intent.READY)
+        game_state.ready_timer -= delta
+        if game_state.ready_timer <= 0:
+            game_intents.append(Game.Intent.POP)
+            _is_waiting_ready = false
+            game_state.is_paused = false

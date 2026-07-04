@@ -2,6 +2,7 @@ extends Node
 class_name LevelManager
 
 @export var container_node: Node
+@export var game_state: GameState
 @export var level_scenes: Array[PackedScene] = []
 @export var pacman_state: PacmanState
 @export var ghost_state: GhostState
@@ -51,3 +52,6 @@ func _load(index: int) -> void:
     collectable_system.level = _level
     tunnel_system.level = _level
     death_system.level = _level
+
+    game_state.ready_timer = 3.0
+    game_state.is_paused = true

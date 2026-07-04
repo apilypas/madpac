@@ -18,8 +18,9 @@ game_state = NodePath("GameState")
 [node name="GameState" type="Node" parent="." unique_id=1778721681]
 script = ExtResource("1_blhi5")
 
-[node name="LevelManager" parent="." unique_id=1949682444 node_paths=PackedStringArray("container_node", "pacman_state", "ghost_state", "collectable_system", "tunnel_system", "death_system") instance=ExtResource("1_5lpdq")]
+[node name="LevelManager" parent="." unique_id=1949682444 node_paths=PackedStringArray("container_node", "game_state", "pacman_state", "ghost_state", "collectable_system", "tunnel_system", "death_system") instance=ExtResource("1_5lpdq")]
 container_node = NodePath("../LevelContainer")
+game_state = NodePath("../GameState")
 level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq")])
 pacman_state = NodePath("../PacmanState")
 ghost_state = NodePath("../GhostState")
