@@ -6,6 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceex"]
 size = Vector2(16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6yew"]
+atlas = ExtResource("1_c78ru")
+region = Rect2(112, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3b33"]
 atlas = ExtResource("1_c78ru")
 region = Rect2(96, 16, 16, 16)
@@ -48,6 +52,14 @@ region = Rect2(112, 80, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ca8k7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6yew")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3b33")
@@ -116,4 +128,4 @@ shape = SubResource("RectangleShape2D_0ceex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=144921360]
 sprite_frames = SubResource("SpriteFrames_ca8k7")
-animation = &"move_right"
+animation = &"dead"

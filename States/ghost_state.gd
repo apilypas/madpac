@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     for ghost in ghosts:
-        if ghost.is_moving:
+        if ghost.is_alive and ghost.is_moving:
             if _snap_to_grid(ghost):
                 ghost.direction = _get_next_direction(ghost)
 
@@ -27,17 +27,18 @@ func _process(delta: float) -> void:
             ghost.scared_timer -= delta
 
 func _handle_animations(ghost: Ghost) -> void:
-    if ghost.scared_timer > 0:
+    if !ghost.is_alive:
+        ghost.sprite.play("dead")
+    elif ghost.scared_timer > 0:
         ghost.sprite.play("scared")
-    else:
-        if ghost.direction == Vector2.RIGHT:
-            ghost.sprite.play("move_right")
-        elif ghost.direction == Vector2.LEFT:
-            ghost.sprite.play("move_left")
-        elif ghost.direction == Vector2.UP:
-            ghost.sprite.play("move_up")
-        elif ghost.direction == Vector2.DOWN:
-            ghost.sprite.play("move_down")
+    elif ghost.direction == Vector2.RIGHT:
+        ghost.sprite.play("move_right")
+    elif ghost.direction == Vector2.LEFT:
+        ghost.sprite.play("move_left")
+    elif ghost.direction == Vector2.UP:
+        ghost.sprite.play("move_up")
+    elif ghost.direction == Vector2.DOWN:
+        ghost.sprite.play("move_down")
 
 func _get_next_direction(ghost: Ghost) -> Vector2:
     var pacman_cell: = wall_layer.local_to_map(pacman.position)
