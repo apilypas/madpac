@@ -9,7 +9,11 @@ var wall_layer: TileMapLayer
 func _ready() -> void:
     pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+    for ghost in ghosts:
+        _handle_animations(ghost)
+
+func _physics_process(delta: float) -> void:
     if !game_state.is_paused:
         for ghost in ghosts:
             if ghost.is_alive and ghost.is_moving:
@@ -19,15 +23,21 @@ func _process(delta: float) -> void:
                 if ghost.direction == Vector2.ZERO:
                     ghost.direction = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].pick_random()
 
-                var collision: = ghost.move_and_collide(ghost.direction * ghost.speed * delta)
-                if collision:
-                    ghost.direction = Vector2.ZERO
+                var speed: float = ghost.speed
+                if ghost.scared_timer > 0:
+                    speed = ghost.scared_speed
+
+                ghost.move_accumulation += speed * delta
+
+                if ghost.move_accumulation >= 1.0:
+                    var collision: = ghost.move_and_collide(ghost.direction * ghost.move_accumulation)
+                    ghost.move_and_slide()
+                    ghost.move_accumulation = 0
+                    if collision:
+                        ghost.direction = Vector2.ZERO
 
             if ghost.scared_timer > 0:
                 ghost.scared_timer -= delta
-
-    for ghost in ghosts:
-        _handle_animations(ghost)
 
 func _handle_animations(ghost: Ghost) -> void:
     if !ghost.is_alive:

@@ -5,16 +5,11 @@ class_name PacmanState
 var pacman: Pacman
 var wall_layer: TileMapLayer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if !pacman.is_alive:
         pacman.sprite.play("dead")
         pacman.sprite.rotation = 0
     elif !game_state.is_paused:
-        _snap_pacman_to_grid()
-
-        if pacman.is_moving:
-            _handle_movement(delta)
-
         pacman.sprite.rotation = pacman.direction.angle()
 
         if (pacman.position - pacman.last_position).length() > 0.1:
@@ -22,6 +17,13 @@ func _process(delta: float) -> void:
             pacman.last_position = pacman.position
         else:
             pacman.sprite.stop()
+
+func _physics_process(delta: float) -> void:
+    if pacman.is_alive and !game_state.is_paused:
+        _snap_pacman_to_grid()
+
+        if pacman.is_moving:
+            _handle_movement(delta)
 
 func _handle_movement(delta: float) -> void:
     var direction: Vector2 = pacman.direction

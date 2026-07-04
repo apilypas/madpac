@@ -70,7 +70,6 @@ ghost_state = NodePath("../GhostState")
 collectable_system = NodePath("../CollectableSystem")
 tunnel_system = NodePath("../TunnelSystem")
 death_system = NodePath("../DeathSystem")
-current_level_index = 1
 
 [node name="LevelContainer" type="Node" parent="." unique_id=941730381]
 
