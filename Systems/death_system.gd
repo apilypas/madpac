@@ -27,9 +27,14 @@ func _process(delta: float) -> void:
 func _handle_ghost_spawning(delta: float) -> void:
     _ghost_spawn_timer -= delta
     if _ghost_spawn_timer <= 0:
-        _ghost_spawn_timer = 5.0
+        _ghost_spawn_timer += 5.0
         for ghost in level.ghosts:
             if !ghost.is_spawned:
-                ghost.position = level.ghost_spawn_marker.position
                 ghost.is_spawned = true
+                ghost.is_moving = false
+                var tween: = create_tween()
+                tween.tween_property(ghost, "scale", Vector2(0, 0), 0.2)
+                tween.tween_property(ghost, "position", level.ghost_spawn_marker.position, 0)
+                tween.tween_property(ghost, "scale", Vector2(1, 1), 0.2)
+                tween.tween_property(ghost, "is_moving", true, 0)
                 break # Spawn only one ghost at once

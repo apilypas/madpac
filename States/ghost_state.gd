@@ -10,15 +10,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     for ghost in ghosts:
-        if _snap_to_grid(ghost):
-            ghost.direction = _get_next_direction(ghost)
+        if ghost.is_moving:
+            if _snap_to_grid(ghost):
+                ghost.direction = _get_next_direction(ghost)
 
-        if ghost.direction == Vector2.ZERO:
-            ghost.direction = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].pick_random()
+            if ghost.direction == Vector2.ZERO:
+                ghost.direction = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].pick_random()
 
-        var collision: = ghost.move_and_collide(ghost.direction * ghost.speed * delta)
-        if collision:
-            ghost.direction = Vector2.ZERO
+            var collision: = ghost.move_and_collide(ghost.direction * ghost.speed * delta)
+            if collision:
+                ghost.direction = Vector2.ZERO
 
         _handle_animations(ghost)
 

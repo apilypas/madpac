@@ -7,7 +7,8 @@ var wall_layer: TileMapLayer
 func _process(delta: float) -> void:
     _snap_pacman_to_grid()
 
-    _handle_movement(delta)
+    if pacman.is_moving:
+        _handle_movement(delta)
 
     pacman.sprite.rotation = pacman.direction.angle()
 
