@@ -52,13 +52,13 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_odngn")
 
-[node name="Level02" type="Node2D" unique_id=186668274 node_paths=PackedStringArray("area", "pacman", "ghosts", "tunnels", "ghost_spawn_marker", "wall_layer", "pellet_layer", "bonus_layer")]
+[node name="Level02" type="Node2D" unique_id=186668274 node_paths=PackedStringArray("area", "pacman", "ghosts", "tunnels", "ghost_spawn_markers", "wall_layer", "pellet_layer", "bonus_layer")]
 script = ExtResource("1_6mfy8")
 area = NodePath("Area")
 pacman = NodePath("Pacman")
 ghosts = [NodePath("Ghost1"), NodePath("Ghost2"), NodePath("Ghost3"), NodePath("Ghost4")]
 tunnels = [NodePath("Tunnel1"), NodePath("Tunnel2"), NodePath("Tunnel3"), NodePath("Tunnel4")]
-ghost_spawn_marker = NodePath("GhostSpawnPoint")
+ghost_spawn_markers = [NodePath("GhostSpawnPoint")]
 wall_layer = NodePath("WallLayer")
 pellet_layer = NodePath("PelletLayer")
 bonus_layer = NodePath("BonusLayer")

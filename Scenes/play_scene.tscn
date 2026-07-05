@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dl34d44pe6bht" path="res://Levels/level_02.tscn" id="3_5lpdq"]
 [ext_resource type="Script" uid="uid://cxg4bhrpt7emg" path="res://Managers/level_manager.gd" id="3_knw1p"]
 [ext_resource type="Script" uid="uid://b0urhu0ayflie" path="res://States/pacman_state.gd" id="4_s0nau"]
+[ext_resource type="PackedScene" uid="uid://b0xwhslkl5hbu" path="res://Levels/level_03.tscn" id="6_io55t"]
 [ext_resource type="Script" uid="uid://6x0bo0oesmfn" path="res://Managers/hud_manager.gd" id="6_knw1p"]
 [ext_resource type="Script" uid="uid://jsp3j3bgdmmw" path="res://States/ghost_state.gd" id="7_pakvq"]
 [ext_resource type="Script" uid="uid://cmgpn05y44nyx" path="res://Systems/tunnel_system.gd" id="8_5lpdq"]
@@ -64,7 +65,7 @@ script = ExtResource("1_blhi5")
 script = ExtResource("3_knw1p")
 container_node = NodePath("../LevelContainer")
 game_state = NodePath("../GameState")
-level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq")])
+level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq"), ExtResource("6_io55t")])
 pacman_state = NodePath("../PacmanState")
 ghost_state = NodePath("../GhostState")
 collectable_system = NodePath("../CollectableSystem")

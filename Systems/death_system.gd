@@ -86,9 +86,17 @@ func _handle_ghost_spawning(delta: float) -> void:
             if !ghost.is_spawned:
                 ghost.is_spawned = true
                 ghost.is_moving = false
+                var closest: = _find_closest_ghost_spawn_position(ghost)
                 var tween: = create_tween()
                 tween.tween_property(ghost, "scale", Vector2(0, 0), 0.2)
-                tween.tween_property(ghost, "position", level.ghost_spawn_marker.position, 0)
+                tween.tween_property(ghost, "position", closest, 0)
                 tween.tween_property(ghost, "scale", Vector2(1, 1), 0.2)
                 tween.tween_property(ghost, "is_moving", true, 0)
                 break # Spawn only one ghost at once
+
+func _find_closest_ghost_spawn_position(ghost: Ghost) -> Vector2:
+    var closest: Vector2 = level.ghost_spawn_markers[0].position
+    for m in level.ghost_spawn_markers:
+        if ghost.position.distance_to(m.position) < ghost.position.distance_to(closest):
+            closest = m.position
+    return closest
