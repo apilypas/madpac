@@ -32,7 +32,7 @@ func _load(index: int) -> void:
 
     # Set up camera for a player character
     var camera: = Camera2D.new()
-    camera.zoom = Vector2(2.0, 2.0)
+    camera.zoom = Vector2(1.0, 1.0)
     camera.limit_left = int(_level.area.position.x)
     camera.limit_right = int(_level.area.position.x + _level.area.size.x)
     camera.limit_top = int(_level.area.position.y)

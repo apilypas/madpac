@@ -5,10 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ceex"]
 atlas = ExtResource("2_xjn4a")
-region = Rect2(80, 0, 16, 16)
+region = Rect2(160, 0, 32, 32)
 
 [node name="Tunnel" type="Node2D" unique_id=716920648]
 script = ExtResource("1_pbyko")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1466535782]
+position = Vector2(4.7683716e-07, 4.7683716e-07)
 texture = SubResource("AtlasTexture_0ceex")

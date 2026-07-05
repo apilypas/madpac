@@ -20,7 +20,7 @@ func init() -> void:
 func _process(delta: float) -> void:
     if !game_state.is_paused:
         for ghost in level.ghosts:
-            if ghost.is_alive and ghost.position.distance_to(level.pacman.position) < 16:
+            if ghost.is_alive and ghost.position.distance_to(level.pacman.position) < 32:
                 if ghost.scared_timer > 0:
                     ghost.scared_timer = 0
                     ghost.is_spawned = false

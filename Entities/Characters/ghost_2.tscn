@@ -4,57 +4,57 @@
 [ext_resource type="Texture2D" uid="uid://bji1fmxhrpf11" path="res://Assets/Textures/Sprites.png" id="2_0e756"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ceex"]
-size = Vector2(16, 16)
+size = Vector2(32.32323, 32.32323)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s6yew"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_03uok"]
 atlas = ExtResource("2_0e756")
-region = Rect2(112, 0, 16, 16)
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mai1l"]
 atlas = ExtResource("2_0e756")
-region = Rect2(96, 32, 16, 16)
+region = Rect2(192, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e756"]
 atlas = ExtResource("2_0e756")
-region = Rect2(112, 32, 16, 16)
+region = Rect2(224, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3kfm"]
 atlas = ExtResource("2_0e756")
-region = Rect2(64, 32, 16, 16)
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhv25"]
 atlas = ExtResource("2_0e756")
-region = Rect2(80, 32, 16, 16)
+region = Rect2(160, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k6ae"]
 atlas = ExtResource("2_0e756")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65ysw"]
 atlas = ExtResource("2_0e756")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2lmt"]
 atlas = ExtResource("2_0e756")
-region = Rect2(32, 32, 16, 16)
+region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0jqv"]
 atlas = ExtResource("2_0e756")
-region = Rect2(48, 32, 16, 16)
+region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3o6x5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl6uv"]
 atlas = ExtResource("2_0e756")
-region = Rect2(96, 80, 16, 16)
+region = Rect2(192, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tgbi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyrjq"]
 atlas = ExtResource("2_0e756")
-region = Rect2(112, 80, 16, 16)
+region = Rect2(224, 160, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ca8k7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s6yew")
+"texture": SubResource("AtlasTexture_03uok")
 }],
 "loop": 1,
 "name": &"dead",
@@ -106,10 +106,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3o6x5")
+"texture": SubResource("AtlasTexture_jl6uv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tgbi")
+"texture": SubResource("AtlasTexture_oyrjq")
 }],
 "loop": 1,
 "name": &"scared",
@@ -123,9 +123,11 @@ script = ExtResource("1_mai1l")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345734192]
-scale = Vector2(0.99, 0.99)
+position = Vector2(-4.7683716e-07, -4.7683716e-07)
+scale = Vector2(0.98, 0.98)
 shape = SubResource("RectangleShape2D_0ceex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=144921360]
+position = Vector2(4.7683716e-07, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_ca8k7")
 animation = &"move_right"
