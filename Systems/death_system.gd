@@ -82,17 +82,20 @@ func _handle_ghost_spawning(delta: float) -> void:
     _ghost_spawn_timer -= delta
     if _ghost_spawn_timer <= 0:
         _ghost_spawn_timer += Constants.DURATION_GHOST_DOOR_OPEN
+        var ghosts: Array[Ghost] = []
         for ghost in level.ghosts:
             if !ghost.is_spawned:
-                ghost.is_spawned = true
-                ghost.is_moving = false
-                var closest: = _find_closest_ghost_spawn_position(ghost)
-                var tween: = create_tween()
-                tween.tween_property(ghost, "scale", Vector2(0, 0), 0.2)
-                tween.tween_property(ghost, "position", closest, 0)
-                tween.tween_property(ghost, "scale", Vector2(1, 1), 0.2)
-                tween.tween_property(ghost, "is_moving", true, 0)
-                break # Spawn only one ghost at once
+                ghosts.append(ghost)
+        if ghosts.size() > 0:
+            var ghost: Ghost = ghosts.pick_random()
+            ghost.is_spawned = true
+            ghost.is_moving = false
+            var closest: = _find_closest_ghost_spawn_position(ghost)
+            var tween: = create_tween()
+            tween.tween_property(ghost, "scale", Vector2(0, 0), 0.2)
+            tween.tween_property(ghost, "position", closest, 0)
+            tween.tween_property(ghost, "scale", Vector2(1, 1), 0.2)
+            tween.tween_property(ghost, "is_moving", true, 0)
 
 func _find_closest_ghost_spawn_position(ghost: Ghost) -> Vector2:
     var closest: Vector2 = level.ghost_spawn_markers[0].position
