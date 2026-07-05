@@ -113,7 +113,7 @@ func _get_next_direction(ghost: Ghost) -> Vector2:
     return Vector2.ZERO
 
 func _check_direction(ghost: Ghost, direction: Vector2) -> bool:
-    var pos: = ghost.position + direction * 32
+    var pos: = ghost.position + direction * Constants.TILE_SIZE
     var cell: = wall_layer.local_to_map(pos)
     var tile_data: = wall_layer.get_cell_tile_data(cell)
     return tile_data == null

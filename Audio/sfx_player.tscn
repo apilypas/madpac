@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b0wpga2eh2pok"]
+
+[ext_resource type="Script" uid="uid://cc5detryvx417" path="res://Audio/sfx_player.gd" id="1_13k1s"]
+[ext_resource type="AudioStream" uid="uid://mcix0oue1371" path="res://Assets/Sounds/Pick.wav" id="2_xnj7y"]
+[ext_resource type="AudioStream" uid="uid://dky3cmca47s1t" path="res://Assets/Sounds/Bonus.wav" id="3_1hmoo"]
+[ext_resource type="AudioStream" uid="uid://co5rpuvba1qwx" path="res://Assets/Sounds/Tunnel.wav" id="4_7vauv"]
+[ext_resource type="AudioStream" uid="uid://dga3ra0vsklho" path="res://Assets/Sounds/Died.wav" id="5_w1ynn"]
+[ext_resource type="AudioStream" uid="uid://5vkivda0h8no" path="res://Assets/Sounds/Kill.wav" id="6_8gqmd"]
+
+[node name="SfxPlayer" type="Node" unique_id=368931673]
+script = ExtResource("1_13k1s")
+
+[node name="PickPlayer" type="AudioStreamPlayer" parent="." unique_id=1625872922]
+stream = ExtResource("2_xnj7y")
+volume_db = -18.246
+
+[node name="BonusPlayer" type="AudioStreamPlayer" parent="." unique_id=1380598550]
+stream = ExtResource("3_1hmoo")
+volume_db = -7.298
+
+[node name="TunnelPlayer" type="AudioStreamPlayer" parent="." unique_id=1816371256]
+stream = ExtResource("4_7vauv")
+volume_db = -5.474
+
+[node name="DiedPlayer" type="AudioStreamPlayer" parent="." unique_id=1090052887]
+stream = ExtResource("5_w1ynn")
+volume_db = -13.714
+
+[node name="KillPlayer" type="AudioStreamPlayer" parent="." unique_id=2120395795]
+stream = ExtResource("6_8gqmd")
+volume_db = -12.771

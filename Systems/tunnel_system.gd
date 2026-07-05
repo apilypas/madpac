@@ -2,6 +2,7 @@ extends Node
 class_name TunnelSystem
 
 @export var game_state: GameState
+@export var sfx_player: SfxPlayer
 var level: Level
 
 func _process(delta: float) -> void:
@@ -28,6 +29,7 @@ func _process(delta: float) -> void:
         level.pacman.is_moving = false
         entry.in_use_timer = 0.5
         exit.in_use_timer = 0.5
+        sfx_player.play(Audio.Sfx.TUNNEL)
         var tween: = create_tween()
         tween.tween_property(level.pacman, "scale", Vector2(0, 0), 0.2)
         tween.tween_property(level.pacman, "position", exit.position, 0)

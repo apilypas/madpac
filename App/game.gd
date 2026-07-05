@@ -3,7 +3,8 @@ class_name Game
 
 enum Intent { START, PLAY, PAUSE, READY, GAME_OVER, POP }
 
-@export var scene_container: Node
+@onready var scene_container: Node = $SceneContainer
+
 @export var start_scene: PackedScene
 @export var play_scene: PackedScene
 @export var pause_scene: PackedScene

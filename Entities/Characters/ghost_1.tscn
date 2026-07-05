@@ -116,11 +116,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost1" type="CharacterBody2D" unique_id=1836695300 node_paths=PackedStringArray("sprite")]
+[node name="Ghost1" type="CharacterBody2D" unique_id=1836695300]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_bgvsr")
-sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345734192]
 position = Vector2(-4.7683716e-07, -4.7683716e-07)

@@ -2,6 +2,7 @@ extends Node
 class_name CollectableSystem
 
 @export var game_state: GameState
+@export var sfx_player: SfxPlayer
 var level: Level
 
 func _process(_delta: float) -> void:
@@ -17,7 +18,8 @@ func _handle_pellets() -> void:
 
     if tile_data:
         level.pellet_layer.erase_cell(cell)
-        game_state.score += 10
+        game_state.score += Constants.SCORE_PELLET
+        sfx_player.play(Audio.Sfx.PICK)
 
 func _handle_bonuses() -> void:
     var cell: = level.bonus_layer.local_to_map(level.pacman.position)
@@ -25,6 +27,7 @@ func _handle_bonuses() -> void:
 
     if tile_data:
         level.bonus_layer.erase_cell(cell)
-        game_state.score += 100
+        game_state.score += Constants.SCORE_BONUS
+        sfx_player.play(Audio.Sfx.BONUS)
         for ghost in level.ghosts:
-            ghost.scared_timer = 5.0
+            ghost.scared_timer = Constants.DURATION_GHOST_SCARE

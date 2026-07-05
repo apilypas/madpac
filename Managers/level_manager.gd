@@ -54,6 +54,6 @@ func _load(index: int) -> void:
     death_system.level = _level
     death_system.init()
 
-    game_state.ready_timer = 3.0
+    game_state.ready_timer = Constants.DURATION_READY
     game_state.is_paused = true
     game_state.level = index + 1

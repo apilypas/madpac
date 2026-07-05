@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://cmgpn05y44nyx" path="res://Systems/tunnel_system.gd" id="8_5lpdq"]
 [ext_resource type="Script" uid="uid://cu55rm8ppsiuf" path="res://Systems/collectable_system.gd" id="9_knw1p"]
 [ext_resource type="Script" uid="uid://bqg505qbim5mk" path="res://Systems/death_system.gd" id="10_blhi5"]
+[ext_resource type="PackedScene" uid="uid://b0wpga2eh2pok" path="res://Audio/sfx_player.tscn" id="12_ivbpn"]
 
-[node name="PlayScene" type="Node2D" unique_id=1010169136 node_paths=PackedStringArray("game_state")]
+[node name="PlayScene" type="Node2D" unique_id=1010169136]
 script = ExtResource("1_knw1p")
-game_state = NodePath("GameState")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1548297962]
 
@@ -88,14 +88,19 @@ game_state = NodePath("../GameState")
 script = ExtResource("7_pakvq")
 game_state = NodePath("../GameState")
 
-[node name="CollectableSystem" type="Node" parent="." unique_id=194082918 node_paths=PackedStringArray("game_state")]
+[node name="CollectableSystem" type="Node" parent="." unique_id=194082918 node_paths=PackedStringArray("game_state", "sfx_player")]
 script = ExtResource("9_knw1p")
 game_state = NodePath("../GameState")
+sfx_player = NodePath("../SfxPlayer")
 
-[node name="TunnelSystem" type="Node" parent="." unique_id=286794842 node_paths=PackedStringArray("game_state")]
+[node name="TunnelSystem" type="Node" parent="." unique_id=286794842 node_paths=PackedStringArray("game_state", "sfx_player")]
 script = ExtResource("8_5lpdq")
 game_state = NodePath("../GameState")
+sfx_player = NodePath("../SfxPlayer")
 
-[node name="DeathSystem" type="Node" parent="." unique_id=386394380 node_paths=PackedStringArray("game_state")]
+[node name="DeathSystem" type="Node" parent="." unique_id=386394380 node_paths=PackedStringArray("game_state", "sfx_player")]
 script = ExtResource("10_blhi5")
 game_state = NodePath("../GameState")
+sfx_player = NodePath("../SfxPlayer")
+
+[node name="SfxPlayer" parent="." unique_id=368931673 instance=ExtResource("12_ivbpn")]

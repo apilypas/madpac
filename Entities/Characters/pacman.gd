@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Pacman
 
-@export var sprite: AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var speed: float = 120.0
 var direction: Vector2 = Vector2.ZERO

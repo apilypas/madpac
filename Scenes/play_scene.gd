@@ -1,7 +1,7 @@
 extends SceneBase
 class_name PlayScene
 
-@export var game_state: GameState
+@onready var game_state: GameState = $GameState
 
 var _is_waiting_ready: bool = false
 var _is_game_over_shown: bool = false

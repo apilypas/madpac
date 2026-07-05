@@ -6,5 +6,5 @@ var can_pause: bool = true
 var ready_timer: float = 0
 var score: int = 0
 var level: int = 0
-var lives: int = 3
+var lives: int = Constants.PLAYER_LIVES
 var is_game_over: bool = false
