@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7edmr33i32xo" path="res://Levels/level_07.tscn" id="10_3cjv5"]
 [ext_resource type="Script" uid="uid://bqg505qbim5mk" path="res://Systems/death_system.gd" id="10_blhi5"]
 [ext_resource type="PackedScene" uid="uid://cjpqxjhvtgd42" path="res://Levels/level_08.tscn" id="11_2kn3l"]
+[ext_resource type="PackedScene" uid="uid://c5hqjsqk8rhc7" path="res://Levels/level_09.tscn" id="12_8n5jp"]
 [ext_resource type="PackedScene" uid="uid://b0wpga2eh2pok" path="res://Audio/sfx_player.tscn" id="12_ivbpn"]
 
 [node name="PlayScene" type="Node2D" unique_id=1010169136]
@@ -70,7 +71,7 @@ script = ExtResource("1_blhi5")
 script = ExtResource("3_knw1p")
 container_node = NodePath("../LevelContainer")
 game_state = NodePath("../GameState")
-level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq"), ExtResource("6_io55t"), ExtResource("7_45wvb"), ExtResource("8_j3qlu"), ExtResource("9_fbpj1"), ExtResource("10_3cjv5"), ExtResource("11_2kn3l")])
+level_scenes = Array[PackedScene]([ExtResource("2_pakvq"), ExtResource("3_5lpdq"), ExtResource("6_io55t"), ExtResource("7_45wvb"), ExtResource("8_j3qlu"), ExtResource("9_fbpj1"), ExtResource("10_3cjv5"), ExtResource("11_2kn3l"), ExtResource("12_8n5jp")])
 pacman_state = NodePath("../PacmanState")
 ghost_state = NodePath("../GhostState")
 collectable_system = NodePath("../CollectableSystem")
