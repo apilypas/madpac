@@ -48,6 +48,8 @@ func _handle_animations(ghost: Ghost) -> void:
         ghost.sprite.play("move_up")
     elif ghost.direction == Vector2.DOWN:
         ghost.sprite.play("move_down")
+    else:
+        ghost.sprite.play("move_right")
 
 func _get_next_direction(ghost: Ghost) -> Vector2:
     var pacman_cell: = wall_layer.local_to_map(pacman.position)
