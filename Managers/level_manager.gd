@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
     # Handle level change
     if _level.pellet_layer.get_used_cells().is_empty() and _level.bonus_layer.get_used_cells().is_empty():
         current_level_index += 1
+        game_state.lives += 1
         _load(current_level_index)
 
 func _load(index: int) -> void:
