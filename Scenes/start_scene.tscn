@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://btutgn3ach8lf"]
 
 [ext_resource type="Script" uid="uid://cusm8lvm4ujx1" path="res://Scenes/start_scene.gd" id="1_82sop"]
+[ext_resource type="Texture2D" uid="uid://87d2nujiuapg" path="res://Assets/Textures/Logo.png" id="2_aeweq"]
+[ext_resource type="PackedScene" uid="uid://b0wpga2eh2pok" path="res://Audio/sfx_player.tscn" id="3_8turk"]
 
 [node name="StartScene" type="Node2D" unique_id=1881456401]
 script = ExtResource("1_82sop")
@@ -21,17 +23,39 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/Control" unique_id=1138953274]
+[node name="StartLabel" type="Label" parent="UI/Control" unique_id=1138953274]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -14.0
-offset_right = 130.0
-offset_bottom = 14.0
+offset_left = -128.0
+offset_top = 196.0
+offset_right = 132.0
+offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press SPACE to start"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Control" unique_id=1303299187]
+position = Vector2(180, 32.000008)
+scale = Vector2(3, 2.588)
+texture = ExtResource("2_aeweq")
+
+[node name="ControlsLabel" type="Label" parent="UI/Control" unique_id=690743730]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = 276.0
+offset_right = 248.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD or ←↑→↓ to move around"
+
+[node name="SfxPlayer" parent="." unique_id=368931673 instance=ExtResource("3_8turk")]
