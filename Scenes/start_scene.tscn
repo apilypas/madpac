@@ -56,6 +56,6 @@ offset_right = 248.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "WASD or ←↑→↓ to move around"
+text = "Use WASD or arrow keys to move around"
 
 [node name="SfxPlayer" parent="." unique_id=368931673 instance=ExtResource("3_8turk")]
