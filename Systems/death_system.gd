@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
                     ghost.scared_timer = 0
                     ghost.is_spawned = false
                     ghost.is_alive = false
+                    ghost.speed += 20.0
                     _hit_stop_timer = 0.2
                     game_state.score += Constants.SCORE_GHOST_KILL
                     sfx_player.play(Audio.Sfx.KILL)
