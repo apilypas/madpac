@@ -22,6 +22,14 @@ func _process(_delta: float) -> void:
         _handle_intent(_intents[0])
         _intents.remove_at(0)
 
+func _unhandled_input(event: InputEvent) -> void:
+    if event is InputEventKey and event.alt_pressed and event.keycode == KEY_ENTER and event.pressed:
+        var mode: = DisplayServer.window_get_mode()
+        if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+            DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+        else:
+            DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
 func _handle_intent(i: SceneIntent) -> void:
     var type: = i.key
     if type == Intent.PAUSE:
