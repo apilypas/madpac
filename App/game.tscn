@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bs6p5imj6c6ig" path="res://Scenes/pause_scene.tscn" id="4_ngppy"]
 [ext_resource type="PackedScene" uid="uid://5ft55i3feef4" path="res://Scenes/ready_scene.tscn" id="5_j3adi"]
 [ext_resource type="PackedScene" uid="uid://dlmdxn8yppmfo" path="res://Scenes/game_over_scene.tscn" id="6_1kb1v"]
+[ext_resource type="PackedScene" uid="uid://q51al4wwu4x6" path="res://Scenes/end_scene.tscn" id="7_ngppy"]
 
 [node name="Game" type="Node2D" unique_id=1637709555]
 script = ExtResource("1_6w5aw")
@@ -14,5 +15,6 @@ play_scene = ExtResource("3_1kb1v")
 pause_scene = ExtResource("4_ngppy")
 ready_scene = ExtResource("5_j3adi")
 game_over_scene = ExtResource("6_1kb1v")
+game_end_scene = ExtResource("7_ngppy")
 
 [node name="SceneContainer" type="Node" parent="." unique_id=734188062]

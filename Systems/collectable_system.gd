@@ -19,6 +19,7 @@ func _handle_pellets() -> void:
     if tile_data:
         level.pellet_layer.erase_cell(cell)
         game_state.score += Constants.SCORE_PELLET
+        game_state.pellets += 1
         sfx_player.play(Audio.Sfx.PICK)
 
 func _handle_bonuses() -> void:
@@ -28,6 +29,7 @@ func _handle_bonuses() -> void:
     if tile_data:
         level.bonus_layer.erase_cell(cell)
         game_state.score += Constants.SCORE_BONUS
+        game_state.pellets += 1
         sfx_player.play(Audio.Sfx.BONUS)
         for ghost in level.ghosts:
             ghost.scared_timer = Constants.DURATION_GHOST_SCARE

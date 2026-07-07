@@ -1,7 +1,7 @@
 extends Node
 class_name Game
 
-enum Intent { START, PLAY, PAUSE, READY, GAME_OVER, POP }
+enum Intent { START, PLAY, PAUSE, READY, GAME_OVER, GAME_END, POP }
 
 @onready var scene_container: Node = $SceneContainer
 
@@ -10,8 +10,9 @@ enum Intent { START, PLAY, PAUSE, READY, GAME_OVER, POP }
 @export var pause_scene: PackedScene
 @export var ready_scene: PackedScene
 @export var game_over_scene: PackedScene
+@export var game_end_scene: PackedScene
 
-var _intents: Array[Intent] = []
+var _intents: Array[SceneIntent] = []
 
 func _ready() -> void:
     _open(start_scene)
@@ -21,28 +22,32 @@ func _process(_delta: float) -> void:
         _handle_intent(_intents[0])
         _intents.remove_at(0)
 
-func _handle_intent(intent: Intent) -> void:
-    if intent == Intent.PAUSE:
+func _handle_intent(i: SceneIntent) -> void:
+    var type: = i.key
+    if type == Intent.PAUSE:
         _push(pause_scene)
-    elif intent == Intent.READY:
+    elif type == Intent.READY:
         _push(ready_scene)
-    elif intent == Intent.GAME_OVER:
+    elif type == Intent.GAME_OVER:
         _push(game_over_scene)
-    elif intent == Intent.POP:
+    elif type == Intent.POP:
         _pop()
-    elif intent == Intent.PLAY:
+    elif type == Intent.PLAY:
         _open(play_scene)
-    elif intent == Intent.START:
+    elif type == Intent.START:
         _open(start_scene)
+    elif type == Intent.GAME_END:
+        _open(game_end_scene, i.data)
 
-func _open(packed_scene: PackedScene) -> void:
+func _open(packed_scene: PackedScene, data: Dictionary = {}) -> void:
     for child in scene_container.get_children():
         child.queue_free()
-    _push(packed_scene)
+    _push(packed_scene, data)
 
-func _push(packed_scene: PackedScene) -> void:
+func _push(packed_scene: PackedScene, data: Dictionary = {}) -> void:
     var scene:SceneBase = packed_scene.instantiate()
     scene.game_intents = _intents
+    scene.game_intent_data = data
     scene_container.add_child(scene)
 
 func _pop() -> void:

@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://q51al4wwu4x6"]
+
+[ext_resource type="Script" uid="uid://bw5rs58fd25lb" path="res://Scenes/end_scene.gd" id="1_5pkqa"]
+
+[node name="EndScene" type="Node2D" unique_id=303229338]
+script = ExtResource("1_5pkqa")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2062403793]
+
+[node name="Control" type="Control" parent="UI" unique_id=1523938691]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="UI/Control" unique_id=58162620]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 40.0
+offset_right = 658.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.9764706, 0.85882354, 0.42745098, 1)
+text = "This is the END!"
+
+[node name="Label3" type="Label" parent="UI/Control" unique_id=2020434423]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 128.0
+offset_right = 1012.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(0.95686275, 0.92941177, 0.92941177, 1)
+text = "Congratulations, you have completed the game!
+You have cleared all levels and defeated at least some enemies.
+Thank you for playing this game."
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="UI/Control" unique_id=2135704917]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 296.0
+offset_right = 576.0
+offset_bottom = 324.0
+theme_override_colors/font_color = Color(0.53333336, 0.58431375, 0.8784314, 1)
+text = "Your score:"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="UI/Control" unique_id=284407540]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.53333336, 0.58431375, 0.8784314, 1)
+text = "Pellets in belly:"
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="UI/Control" unique_id=1581864723]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 360.0
+offset_right = 576.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(0.53333336, 0.58431375, 0.8784314, 1)
+text = "Slaughtered enemies:"
+horizontal_alignment = 2
+
+[node name="Label7" type="Label" parent="UI/Control" unique_id=72696471]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 432.0
+offset_right = 576.0
+offset_bottom = 460.0
+theme_override_colors/font_color = Color(0.22352941, 0.69411767, 0.6745098, 1)
+text = "Programming:"
+horizontal_alignment = 2
+
+[node name="Label8" type="Label" parent="UI/Control" unique_id=1776463141]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 464.0
+offset_right = 576.0
+offset_bottom = 492.0
+theme_override_colors/font_color = Color(0.22352941, 0.69411767, 0.6745098, 1)
+text = "Graphics:"
+horizontal_alignment = 2
+
+[node name="Label9" type="Label" parent="UI/Control" unique_id=859629906]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 496.0
+offset_right = 576.0
+offset_bottom = 524.0
+theme_override_colors/font_color = Color(0.22352941, 0.69411767, 0.6745098, 1)
+text = "Sounds:"
+horizontal_alignment = 2
+
+[node name="Label10" type="Label" parent="UI/Control" unique_id=1543736646]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 528.0
+offset_right = 576.0
+offset_bottom = 556.0
+theme_override_colors/font_color = Color(0.22352941, 0.69411767, 0.6745098, 1)
+text = "Engine:"
+horizontal_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/Control" unique_id=834836614]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 296.0
+offset_right = 696.0
+offset_bottom = 324.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "#SCORE#"
+
+[node name="PelletsLabel" type="Label" parent="UI/Control" unique_id=754711636]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 328.0
+offset_right = 720.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "#PELLETS#"
+
+[node name="EnemiesLabel" type="Label" parent="UI/Control" unique_id=793892330]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 360.0
+offset_right = 730.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "#ENEMIES#"
+
+[node name="Label14" type="Label" parent="UI/Control" unique_id=1356939479]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 432.0
+offset_right = 950.0
+offset_bottom = 460.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "g1ngercat (Andrius Pilypas)"
+
+[node name="Label15" type="Label" parent="UI/Control" unique_id=1749001740]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 464.0
+offset_right = 950.0
+offset_bottom = 492.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "g1ngercat"
+
+[node name="Label16" type="Label" parent="UI/Control" unique_id=1673914646]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 496.0
+offset_right = 950.0
+offset_bottom = 524.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "SFXR"
+
+[node name="Label17" type="Label" parent="UI/Control" unique_id=988819691]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 528.0
+offset_right = 950.0
+offset_bottom = 556.0
+theme_override_colors/font_color = Color(0.6745098, 0.58431375, 0.2509804, 1)
+text = "Godot Team"

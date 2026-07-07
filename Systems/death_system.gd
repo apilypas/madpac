@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
                     ghost.speed += 20.0
                     _hit_stop_timer = 0.2
                     game_state.score += Constants.SCORE_GHOST_KILL
+                    game_state.enemies += 1
                     sfx_player.play(Audio.Sfx.KILL)
                     var tween: = create_tween()
                     tween.tween_property(ghost, "position", _ghost_positions[ghost], 0.3)

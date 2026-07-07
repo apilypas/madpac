@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
         start_label.visible = true
         _flicker_intensity = 0.1
         _flicker_timer = _flicker_intensity
-        await  get_tree().create_timer(1.0).timeout
-        game_intents.append(Game.Intent.PLAY)
+        await get_tree().create_timer(1.0).timeout
+        queue_intent(Game.Intent.PLAY)
 
     _flicker_timer -= delta
 
