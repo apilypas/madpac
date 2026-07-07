@@ -36,6 +36,7 @@ offset_right = 132.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.9764706, 0.85882354, 0.42745098, 1)
 text = "Press SPACE to start"
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/Control" unique_id=1303299187]
@@ -56,6 +57,14 @@ offset_right = 248.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Use WASD or arrow keys to move around"
+text = "Use WASD or arrow keys to move around, ESC for pause"
+
+[node name="CreditsLabel" type="Label" parent="UI/Control" unique_id=2101409315]
+layout_mode = 0
+offset_left = 52.0
+offset_top = -248.0
+offset_right = 292.0
+offset_bottom = -220.0
+text = "2026, by g1ngercat"
 
 [node name="SfxPlayer" parent="." unique_id=368931673 instance=ExtResource("3_8turk")]
