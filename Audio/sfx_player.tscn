@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://co5rpuvba1qwx" path="res://Assets/Sounds/Tunnel.wav" id="4_7vauv"]
 [ext_resource type="AudioStream" uid="uid://dga3ra0vsklho" path="res://Assets/Sounds/Died.wav" id="5_w1ynn"]
 [ext_resource type="AudioStream" uid="uid://5vkivda0h8no" path="res://Assets/Sounds/Kill.wav" id="6_8gqmd"]
+[ext_resource type="AudioStream" uid="uid://d0fn7oitutd15" path="res://Assets/Sounds/Pause.wav" id="7_da1f2"]
 
 [node name="SfxPlayer" type="Node" unique_id=368931673]
 script = ExtResource("1_13k1s")
@@ -29,3 +30,7 @@ volume_db = -13.714
 [node name="KillPlayer" type="AudioStreamPlayer" parent="." unique_id=2120395795]
 stream = ExtResource("6_8gqmd")
 volume_db = -12.771
+
+[node name="PausePlayer" type="AudioStreamPlayer" parent="." unique_id=1500060348]
+stream = ExtResource("7_da1f2")
+volume_db = -13.951

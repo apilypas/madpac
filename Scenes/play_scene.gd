@@ -3,6 +3,7 @@ class_name PlayScene
 
 @onready var game_state: GameState = $GameState
 @onready var level_manager: LevelManager = $LevelManager
+@onready var sfx_player: SfxPlayer = $SfxPlayer
 
 var _is_waiting_ready: bool = false
 var _is_game_over_shown: bool = false
@@ -12,6 +13,7 @@ func _process(delta: float) -> void:
         if Input.is_action_just_pressed("pause"):
             game_state.is_paused = !game_state.is_paused
             if game_state.is_paused:
+                sfx_player.play(Audio.Sfx.PAUSE)
                 queue_intent(Game.Intent.PAUSE)
 
     if game_state.ready_timer > 0:
