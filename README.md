@@ -8,6 +8,7 @@ Pacman clone I wrote in process of learning GDScript
 
 * Enemies
 * Power up bonuses
+* Fruits for additional score
 * 10 levels
 
 ## Platforms
