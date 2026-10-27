@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://5ft55i3feef4" path="res://Scenes/ready_scene.tscn" id="5_j3adi"]
 [ext_resource type="PackedScene" uid="uid://dlmdxn8yppmfo" path="res://Scenes/game_over_scene.tscn" id="6_1kb1v"]
 [ext_resource type="PackedScene" uid="uid://q51al4wwu4x6" path="res://Scenes/end_scene.tscn" id="7_ngppy"]
+[ext_resource type="Shader" uid="uid://phr3nf1wnrne" path="res://Assets/Shaders/crt.gdshader" id="8_x2djq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngppy"]
+shader = ExtResource("8_x2djq")
+shader_parameter/screen_resolution = Vector2(576, 324)
+shader_parameter/scanline_intensity = 0.2
+shader_parameter/color_bleed_weight = 0.27
 
 [node name="Game" type="Node2D" unique_id=1637709555]
 script = ExtResource("1_6w5aw")
@@ -18,3 +25,15 @@ game_over_scene = ExtResource("6_1kb1v")
 game_end_scene = ExtResource("7_ngppy")
 
 [node name="SceneContainer" type="Node" parent="." unique_id=734188062]
+
+[node name="ShaderLayer" type="CanvasLayer" parent="." unique_id=1116168328]
+
+[node name="ColorRect" type="ColorRect" parent="ShaderLayer" unique_id=2063606152]
+material = SubResource("ShaderMaterial_ngppy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
