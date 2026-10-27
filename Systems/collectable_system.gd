@@ -5,6 +5,8 @@ class_name CollectableSystem
 @export var sfx_player: SfxPlayer
 var level: Level
 
+@export var points_label_scene: PackedScene
+
 func _process(delta: float) -> void:
     if game_state.is_paused:
         return
@@ -71,45 +73,60 @@ func _handle_pick_up() -> void:
             game_state.score += Constants.SCORE_CHERRY
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_CHERRY, cell)
 
         elif atlas_coords == Constants.STRAWBERRY_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_STRAWBERRY
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_STRAWBERRY, cell)
 
         elif atlas_coords == Constants.ORANGE_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_ORANGE
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_ORANGE, cell)
 
         elif atlas_coords == Constants.APPLE_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_APPLE
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_APPLE, cell)
 
         elif atlas_coords == Constants.PEAR_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_PEAR
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_PEAR, cell)
 
         elif atlas_coords == Constants.MEDAL_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_MEDAL
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_MEDAL, cell)
 
         elif atlas_coords == Constants.CUP_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_CUP
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_CUP, cell)
 
         elif atlas_coords == Constants.KEY_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_KEY
             sfx_player.play(Audio.Sfx.BONUS)
             level.pacman.do_pulse()
+            _show_score(Constants.SCORE_KEY, cell)
+
+func _show_score(score: int, cell: Vector2i) -> void:
+    var pos := level.pellet_layer.map_to_local(cell)
+    var label: PointsLabel = points_label_scene.instantiate()
+    label.position = pos
+    level.add_child(label)
+    label.set_text(str(score))

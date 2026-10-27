@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dc4y22y80soga"]
+
+[ext_resource type="Script" uid="uid://fpv5s3s1jxv1" path="res://Entities/Common/points_label.gd" id="1_plcdd"]
+[ext_resource type="FontFile" uid="uid://dbcg0csgmg8ph" path="res://Assets/Fonts/PixelForce.ttf" id="2_50sgb"]
+
+[node name="PointsLabel" type="Node2D" unique_id=1687233883]
+script = ExtResource("1_plcdd")
+
+[node name="Label" type="Label" parent="." unique_id=1348959050]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_50sgb")
+theme_override_font_sizes/font_size = 12
+text = "Test"

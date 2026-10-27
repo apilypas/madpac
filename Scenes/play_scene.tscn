@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c5hqjsqk8rhc7" path="res://Levels/level_09.tscn" id="12_8n5jp"]
 [ext_resource type="PackedScene" uid="uid://b0wpga2eh2pok" path="res://Audio/sfx_player.tscn" id="12_ivbpn"]
 [ext_resource type="PackedScene" uid="uid://7grimmmacbl7" path="res://Levels/level_10.tscn" id="13_fg1lf"]
+[ext_resource type="PackedScene" uid="uid://dc4y22y80soga" path="res://Entities/Common/points_label.tscn" id="18_lneu0"]
 
 [node name="PlayScene" type="Node2D" unique_id=1010169136]
 script = ExtResource("1_knw1p")
@@ -100,6 +101,7 @@ game_state = NodePath("../GameState")
 script = ExtResource("9_knw1p")
 game_state = NodePath("../GameState")
 sfx_player = NodePath("../SfxPlayer")
+points_label_scene = ExtResource("18_lneu0")
 
 [node name="TunnelSystem" type="Node" parent="." unique_id=286794842 node_paths=PackedStringArray("game_state", "sfx_player")]
 script = ExtResource("8_5lpdq")
@@ -110,5 +112,6 @@ sfx_player = NodePath("../SfxPlayer")
 script = ExtResource("10_blhi5")
 game_state = NodePath("../GameState")
 sfx_player = NodePath("../SfxPlayer")
+points_label_scene = ExtResource("18_lneu0")
 
 [node name="SfxPlayer" parent="." unique_id=368931673 instance=ExtResource("12_ivbpn")]
