@@ -12,6 +12,7 @@ config_version=5
 
 config/name="MadPac"
 config/description="PacMan Clone"
+config/version="0.2"
 run/main_scene="uid://cn3al7l7i0ncd"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bvlo8n157v2e8"
