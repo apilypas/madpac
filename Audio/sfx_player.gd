@@ -7,6 +7,7 @@ class_name SfxPlayer
 @onready var _died_player: AudioStreamPlayer = $DiedPlayer
 @onready var _kill_player: AudioStreamPlayer = $KillPlayer
 @onready var _pause_player: AudioStreamPlayer = $PausePlayer
+@onready var _bonus_spawned_player: AudioStreamPlayer = $BonusSpawnedPlayer
 
 func play(sfx: Audio.Sfx) -> void:
     if sfx == Audio.Sfx.PICK:
@@ -22,3 +23,5 @@ func play(sfx: Audio.Sfx) -> void:
         _kill_player.play()
     elif sfx == Audio.Sfx.PAUSE:
         _pause_player.play()
+    elif sfx == Audio.Sfx.BONUS_SPAWNED:
+        _bonus_spawned_player.play()

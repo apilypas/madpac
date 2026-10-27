@@ -33,7 +33,7 @@ func _load(index: int) -> void:
         container_node.add_child(_level)
 
         # Set up camera for a player character
-        var camera: = Camera2D.new()
+        var camera := Camera2D.new()
         camera.zoom = Vector2(1.0, 1.0)
         camera.limit_left = int(_level.area.position.x)
         camera.limit_right = int(_level.area.position.x + _level.area.size.x)
@@ -56,8 +56,46 @@ func _load(index: int) -> void:
         death_system.level = _level
         death_system.init()
 
+        # Update game state values
         game_state.ready_timer = Constants.DURATION_READY
         game_state.is_paused = true
         game_state.level = index + 1
+        game_state.level_pellets_collected = 0
+        game_state.pacman_initial_pos = _level.pacman.position
+        game_state.is_fruit_spawned_1 = false
+        game_state.is_fruit_spawned_2 = false
+        game_state.fruit_timer = 0
+        game_state.spawn_fruit_1_at = roundi(_get_pellet_count() / 3.0);
+        game_state.spawn_fruit_2_at = roundi(_get_pellet_count() / 3.0 * 2.0)
+        game_state.fruit_cell = _get_level_fruit(game_state.level)
     else:
         game_state.is_game_end = true
+
+func _get_pellet_count() -> int:
+    var count: int = 0
+    for cell in _level.pellet_layer.get_used_cells():
+        var atlas_coords := _level.pellet_layer.get_cell_atlas_coords(cell)
+        if atlas_coords == Constants.PELLET_COORDS or atlas_coords == Constants.BOOST_COORDS:
+            count += 1
+            
+    return count
+
+func _get_level_fruit(level: int) -> Vector2i:
+    if level == 1:
+        return Constants.CHERRY_COORDS
+    if level == 2:
+        return Constants.STRAWBERRY_COORDS
+    if level == 3:
+        return Constants.ORANGE_COORDS
+    if level == 4:
+        return Constants.APPLE_COORDS
+    if level == 5:
+        return Constants.PEAR_COORDS
+    if level == 6:
+        return Constants.MEDAL_COORDS
+    if level == 7:
+        return Constants.MEDAL_COORDS
+    if level == 8:
+        return Constants.CUP_COORDS
+
+    return Constants.KEY_COORDS

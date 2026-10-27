@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
                     game_state.score += Constants.SCORE_GHOST_KILL
                     game_state.enemies += 1
                     sfx_player.play(Audio.Sfx.KILL)
-                    var tween: = create_tween()
+                    var tween := create_tween()
                     tween.tween_property(ghost, "position", _ghost_positions[ghost], 0.3)
                     tween.tween_property(ghost, "is_alive", true, 0)
                 else:
@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
                     level.pacman.is_moving = false
                     _pacman_death_timer = Constants.DURATION_PLAYER_DEATH
                     sfx_player.play(Audio.Sfx.DIED)
+                    _remove_fruit()
 
         _handle_ghost_spawning(delta)
         _handle_hit_stop(delta)
@@ -75,7 +76,7 @@ func _handle_hit_stop(delta: float) -> void:
             for ghost in level.ghosts:
                 ghost.is_moving = false
             level.pacman.is_moving = false
-        else :
+        else:
             for ghost in level.ghosts:
                 ghost.is_moving = true
             level.pacman.is_moving = true
@@ -92,8 +93,8 @@ func _handle_ghost_spawning(delta: float) -> void:
             var ghost: Ghost = ghosts.pick_random()
             ghost.is_spawned = true
             ghost.is_moving = false
-            var closest: = _find_closest_ghost_spawn_position(ghost)
-            var tween: = create_tween()
+            var closest := _find_closest_ghost_spawn_position(ghost)
+            var tween := create_tween()
             tween.tween_property(ghost, "scale", Vector2(0, 0), 0.2)
             tween.tween_property(ghost, "position", closest, 0)
             tween.tween_property(ghost, "scale", Vector2(1, 1), 0.2)
@@ -105,3 +106,11 @@ func _find_closest_ghost_spawn_position(ghost: Ghost) -> Vector2:
         if ghost.position.distance_to(m.position) < ghost.position.distance_to(closest):
             closest = m.position
     return closest
+
+func _remove_fruit() -> void:
+    if game_state.fruit_timer > 0:
+        var fruit_cell := level.pellet_layer.local_to_map(game_state.pacman_initial_pos)
+        var tile_data := level.pellet_layer.get_cell_tile_data(fruit_cell)
+        if tile_data:
+            level.pellet_layer.erase_cell(fruit_cell)
+        game_state.fruit_timer = 0
