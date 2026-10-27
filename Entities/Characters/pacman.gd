@@ -11,3 +11,8 @@ var last_position: Vector2 = Vector2.ZERO
 var ignore_input_timer: float = 0
 var is_moving: bool = true
 var is_alive: bool = true
+
+func do_pulse() -> void:
+    var tween := create_tween()
+    tween.tween_property(sprite, "scale", Vector2(1.2, 1.2), 0.07)
+    tween.tween_property(sprite, "scale", Vector2(1, 1), 0.02)

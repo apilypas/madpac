@@ -54,6 +54,7 @@ func _handle_pick_up() -> void:
             game_state.pellets += 1
             game_state.level_pellets_collected += 1
             sfx_player.play(Audio.Sfx.PICK)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.BOOST_COORDS:
             level.pellet_layer.erase_cell(cell)
@@ -61,6 +62,7 @@ func _handle_pick_up() -> void:
             game_state.pellets += 1
             game_state.level_pellets_collected += 1
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
             for ghost in level.ghosts:
                 ghost.scared_timer = Constants.DURATION_GHOST_SCARE
 
@@ -68,38 +70,46 @@ func _handle_pick_up() -> void:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_CHERRY
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.STRAWBERRY_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_STRAWBERRY
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.ORANGE_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_ORANGE
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.APPLE_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_APPLE
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.PEAR_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_PEAR
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.MEDAL_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_MEDAL
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.CUP_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_CUP
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
 
         elif atlas_coords == Constants.KEY_COORDS:
             level.pellet_layer.erase_cell(cell)
             game_state.score += Constants.SCORE_KEY
             sfx_player.play(Audio.Sfx.BONUS)
+            level.pacman.do_pulse()
